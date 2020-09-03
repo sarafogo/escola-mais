@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/escola-mais/static/css/main.04572241.chunk.css",
+    "main.js": "/escola-mais/static/js/main.2338b837.chunk.js",
+    "main.js.map": "/escola-mais/static/js/main.2338b837.chunk.js.map",
+    "runtime-main.js": "/escola-mais/static/js/runtime-main.9446ea5c.js",
+    "runtime-main.js.map": "/escola-mais/static/js/runtime-main.9446ea5c.js.map",
+    "static/js/2.3c06d22f.chunk.js": "/escola-mais/static/js/2.3c06d22f.chunk.js",
+    "static/js/2.3c06d22f.chunk.js.map": "/escola-mais/static/js/2.3c06d22f.chunk.js.map",
+    "index.html": "/escola-mais/index.html",
+    "precache-manifest.f1d5ab1b55d1b9748eb97400bd0cd598.js": "/escola-mais/precache-manifest.f1d5ab1b55d1b9748eb97400bd0cd598.js",
+    "service-worker.js": "/escola-mais/service-worker.js",
+    "static/css/main.04572241.chunk.css.map": "/escola-mais/static/css/main.04572241.chunk.css.map",
+    "static/js/2.3c06d22f.chunk.js.LICENSE.txt": "/escola-mais/static/js/2.3c06d22f.chunk.js.LICENSE.txt",
+    "static/media/todo.css": "/escola-mais/static/media/321660.32b30918.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9446ea5c.js",
+    "static/js/2.3c06d22f.chunk.js",
+    "static/css/main.04572241.chunk.css",
+    "static/js/main.2338b837.chunk.js"
+  ]
+}
