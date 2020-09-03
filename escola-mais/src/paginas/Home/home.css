@@ -1,0 +1,31 @@
+.home-content {
+    text-align: center;
+    background-image: url('../../images/321660.jpg');
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+.titulo{
+    color: white;
+}
+.usuarios {
+    display: flex;
+    justify-content: center;
+    margin: 15px 350px;
+    height: 20px;
+    padding-bottom: 25px;
+    text-align: center;
+    list-style-type: none;
+    background-color: rgba(128, 125, 125, 0.274);
+}
+
+a{
+    color:rgb(219, 213, 213);
+    text-decoration: none;
+}
+
+a:hover {
+  color: rgb(0, 0, 0);  
+}
+

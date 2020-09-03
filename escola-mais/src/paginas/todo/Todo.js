@@ -1,56 +1,116 @@
 import React, { Component } from 'react';
 import Api from '../../services/api/Api';
+import Form from '../../components/form/Form';
 import './todo.css';
+import Button from '../../components/Button/Button';
+
 
 
 
 
 class Todo extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            todo: [],
+            todoList: [],
+            inputValue:'',
+            title: '',
+            error:''
         };
     }
 
-    componentDidMount = async () => {
-        const  id  = this.props.match.params.userId;
-        
-        const response = await Api.get(`/users/${id}/todos`);
-        console.log(response)
 
-        this.setState({ todo: response.data })
+
+    onChange = (e) => {
+        const value = e.target.value;
+        this.setState({ inputValue: value })
     }
+
+    addTodo = () => {
+        const userId = this.props.match.params.userId;
+        const todoList = this.state.todoList;
+        const value = {
+            title: this.state.inputValue
+        }
+
+       Api.post(`/users/${userId}/todos`, value)
+
+            .then(res => {
+                todoList.push(res.data)
+
+                this.setState({ todoList: todoList,  inputValue: '' })
+            })
+            
+
+            
+    }
+
+    deleteTodo(id) {
+        const todoList = this.state.todoList;
+
+
+        Api.delete(`/todos/${id}/`)
+            .then((res) => {
+                console.log('res', res)
+                const newTodoList = todoList.filter(todo => todo.id != id);
+                console.log(newTodoList)
+                this.setState({todoList: newTodoList})
+            })
+            .catch(error =>{
+                console.log('error', error)
+            })
+
+    }
+
+
+    componentDidMount = async () => {
+        const userId = this.props.match.params.userId;
+        const response = await Api.get(`/users/${userId}/todos`);
+        this.setState({ todoList: response.data })
+    };
 
 
 
 
     render() {
-        const { todo } = this.state;
-        console.log(todo)
+        const { todoList, error, id } = this.state;
 
         return (
-            <div>
+            <div className='todo-content'>
+            <div className='div-mae'>
+                <div className='input-todo'>
+                    <Form
+                        value={this.state.inputValue}
+                        onChange={this.onChange}
+                       
+                    />
+                    <Button onClick={this.addTodo} />
 
-                
+                </div>
+                <div>
+                    {error && <p>{error}</p>}
+                </div>
 
+                <div className='div-li'>
+                    {todoList.map(lista => (
+                        <li key={lista.title}>
+                            <div className='li-todo'>
+                                <p>{lista.title}</p>
+                                <button  onClick={() => this.deleteTodo(lista.id)} className='btn-excluir'>Excluir</button>
 
+                            </div>
+                        </li>
 
-                <p>To do List</p>
-                {todo.map(lista => (
-                    <li key={lista.title}>
-                        <p>{lista.title}</p>
-                    </li>
-                ))}
+                    ))}
+                </div>
+            </div>
             </div>
         )
 
     }
 
-
-
-}
+};
 
 
 export default Todo;
