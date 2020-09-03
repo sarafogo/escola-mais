@@ -3,7 +3,7 @@
     background-image: url('../../images/321660.jpg');
     height: 100%;
     margin: 0;
-    /* padding: 20px; */
+    padding: 20px; 
     font-size: 0.8rem;
     display: flex;
     justify-content: center;
@@ -12,9 +12,11 @@
 .input-todo{
     display: flex;
     justify-content: space-around;
-
     margin: 25px 0 25px 0;
+}
 
+.error{
+    color: white;
 }
 
 .div-li {

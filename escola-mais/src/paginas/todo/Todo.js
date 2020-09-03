@@ -33,14 +33,18 @@ class Todo extends Component {
         const value = {
             title: this.state.inputValue
         }
+        if(value.title != ''){
 
-       Api.post(`/users/${userId}/todos`, value)
-
+            Api.post(`/users/${userId}/todos`, value)
+            
             .then(res => {
                 todoList.push(res.data)
-
-                this.setState({ todoList: todoList,  inputValue: '' })
+                
+                this.setState({ todoList: todoList,  inputValue: '', error: '' })
             })
+        } else {
+            this.setState({ error: 'Por favor, digite uma tarefa'})
+        }
             
 
             
@@ -54,11 +58,11 @@ class Todo extends Component {
             .then((res) => {
                 console.log('res', res)
                 const newTodoList = todoList.filter(todo => todo.id != id);
-                console.log(newTodoList)
                 this.setState({todoList: newTodoList})
             })
             .catch(error =>{
                 console.log('error', error)
+                this.setState({ error: 'Não foi possivel excluir a tarefa.'})
             })
 
     }
@@ -89,7 +93,7 @@ class Todo extends Component {
 
                 </div>
                 <div>
-                    {error && <p>{error}</p>}
+                    {error && <p className='error'>{error}</p>}
                 </div>
 
                 <div className='div-li'>
