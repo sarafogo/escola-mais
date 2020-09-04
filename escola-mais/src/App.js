@@ -7,8 +7,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className=''>
-      <BrowserRouter>
+    <div>
+      <BrowserRouter basename='/escola-mais'>
         <Switch>
           <Route  exact path='/' component={Home} />
           <Route path='/todo/:userId' component={Todo}/>

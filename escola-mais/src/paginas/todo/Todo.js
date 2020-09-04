@@ -5,18 +5,15 @@ import './todo.css';
 import Button from '../../components/Button/Button';
 
 
-
-
-
 class Todo extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             todoList: [],
-            inputValue:'',
+            inputValue: '',
             title: '',
-            error:''
+            error: ''
         };
     }
 
@@ -33,38 +30,29 @@ class Todo extends Component {
         const value = {
             title: this.state.inputValue
         }
-        if(value.title != ''){
-
+        if (value.title !== '') {
             Api.post(`/users/${userId}/todos`, value)
-            
-            .then(res => {
-                todoList.push(res.data)
-                
-                this.setState({ todoList: todoList,  inputValue: '', error: '' })
-            })
-        } else {
-            this.setState({ error: 'Por favor, digite uma tarefa'})
-        }
-            
+                .then(res => {
+                    todoList.push(res.data)
 
-            
+                    this.setState({ todoList: todoList, inputValue: '', error: '' })
+                })
+        } else {
+            this.setState({ error: 'Por favor, digite uma tarefa' })
+        }
     }
 
     deleteTodo(id) {
         const todoList = this.state.todoList;
 
-
         Api.delete(`/todos/${id}/`)
             .then((res) => {
-                console.log('res', res)
-                const newTodoList = todoList.filter(todo => todo.id != id);
-                this.setState({todoList: newTodoList})
+                const newTodoList = todoList.filter(todo => todo.id !== id);
+                this.setState({ todoList: newTodoList })
             })
-            .catch(error =>{
-                console.log('error', error)
-                this.setState({ error: 'Não foi possivel excluir a tarefa.'})
+            .catch(error => {
+                this.setState({ error: 'Não foi possivel excluir a tarefa.' })
             })
-
     }
 
 
@@ -75,40 +63,35 @@ class Todo extends Component {
     };
 
 
-
-
     render() {
-        const { todoList, error, id } = this.state;
+        const { todoList, error } = this.state;
 
         return (
             <div className='todo-content'>
-            <div className='div-mae'>
-                <div className='input-todo'>
-                    <Form
-                        value={this.state.inputValue}
-                        onChange={this.onChange}
-                       
-                    />
-                    <Button onClick={this.addTodo} />
+                <div className='div-mae'>
+                    <div className='input-todo'>
+                        <Form
+                            value={this.state.inputValue}
+                            onChange={this.onChange}
 
+                        />
+                        <Button onClick={this.addTodo} />
+
+                    </div>
+                    <div>
+                        {error && <p className='error'>{error}</p>}
+                    </div>
+                    <div className='div-li'>
+                        {todoList.map(lista => (
+                            <li key={lista.title}>
+                                <div className='li-todo'>
+                                    <p>{lista.title}</p>
+                                    <button onClick={() => this.deleteTodo(lista.id)} className='btn-excluir'>Excluir</button>
+                                </div>
+                            </li>
+                        ))}
+                    </div>
                 </div>
-                <div>
-                    {error && <p className='error'>{error}</p>}
-                </div>
-
-                <div className='div-li'>
-                    {todoList.map(lista => (
-                        <li key={lista.title}>
-                            <div className='li-todo'>
-                                <p>{lista.title}</p>
-                                <button  onClick={() => this.deleteTodo(lista.id)} className='btn-excluir'>Excluir</button>
-
-                            </div>
-                        </li>
-
-                    ))}
-                </div>
-            </div>
             </div>
         )
 
