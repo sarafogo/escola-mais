@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "35481dbb73175ae584f14043d25a62d0",
+    "revision": "e23f6c5370bf8ce14804f810688a92fc",
     "url": "/escola-mais/index.html"
   },
   {
-    "revision": "85c2dd6aa08a46a96dc5",
-    "url": "/escola-mais/static/css/main.04572241.chunk.css"
+    "revision": "46eb9e3eee04343bc0ca",
+    "url": "/escola-mais/static/css/main.ee0cea55.chunk.css"
   },
   {
     "revision": "882239a36edecb8f6c76",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/escola-mais/static/js/2.3c06d22f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "85c2dd6aa08a46a96dc5",
-    "url": "/escola-mais/static/js/main.2338b837.chunk.js"
+    "revision": "46eb9e3eee04343bc0ca",
+    "url": "/escola-mais/static/js/main.266b4b90.chunk.js"
   },
   {
     "revision": "dc916d0d3223b1bb06f5",
